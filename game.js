@@ -1,57 +1,57 @@
 // US States Quiz Game using D3.js and TopoJSON for accurate map rendering
 
-// State data: FIPS codes, names, capitals, and mottos
+// State data: FIPS codes, names, capitals, and nicknames
 const stateData = {
-    "01": { name: "Alabama", capital: "Montgomery", motto: "We Dare Defend Our Rights" },
-    "02": { name: "Alaska", capital: "Juneau", motto: "North to the Future" },
-    "04": { name: "Arizona", capital: "Phoenix", motto: "God Enriches" },
-    "05": { name: "Arkansas", capital: "Little Rock", motto: "The People Rule" },
-    "06": { name: "California", capital: "Sacramento", motto: "Eureka" },
-    "08": { name: "Colorado", capital: "Denver", motto: "Nothing Without Providence" },
-    "09": { name: "Connecticut", capital: "Hartford", motto: "He Who Transplanted Still Sustains" },
-    "10": { name: "Delaware", capital: "Dover", motto: "Liberty and Independence" },
-    "12": { name: "Florida", capital: "Tallahassee", motto: "In God We Trust" },
-    "13": { name: "Georgia", capital: "Atlanta", motto: "Wisdom, Justice, and Moderation" },
-    "15": { name: "Hawaii", capital: "Honolulu", motto: "The Life of the Land is Perpetuated in Righteousness" },
-    "16": { name: "Idaho", capital: "Boise", motto: "Let It Be Perpetual" },
-    "17": { name: "Illinois", capital: "Springfield", motto: "State Sovereignty, National Union" },
-    "18": { name: "Indiana", capital: "Indianapolis", motto: "The Crossroads of America" },
-    "19": { name: "Iowa", capital: "Des Moines", motto: "Our Liberties We Prize and Our Rights We Will Maintain" },
-    "20": { name: "Kansas", capital: "Topeka", motto: "To the Stars Through Difficulties" },
-    "21": { name: "Kentucky", capital: "Frankfort", motto: "United We Stand, Divided We Fall" },
-    "22": { name: "Louisiana", capital: "Baton Rouge", motto: "Union, Justice, Confidence" },
-    "23": { name: "Maine", capital: "Augusta", motto: "I Lead" },
-    "24": { name: "Maryland", capital: "Annapolis", motto: "Manly Deeds, Womanly Words" },
-    "25": { name: "Massachusetts", capital: "Boston", motto: "By the Sword We Seek Peace, But Peace Only Under Liberty" },
-    "26": { name: "Michigan", capital: "Lansing", motto: "If You Seek a Pleasant Peninsula, Look About You" },
-    "27": { name: "Minnesota", capital: "Saint Paul", motto: "The Star of the North" },
-    "28": { name: "Mississippi", capital: "Jackson", motto: "By Valor and Arms" },
-    "29": { name: "Missouri", capital: "Jefferson City", motto: "The Welfare of the People Shall Be the Supreme Law" },
-    "30": { name: "Montana", capital: "Helena", motto: "Gold and Silver" },
-    "31": { name: "Nebraska", capital: "Lincoln", motto: "Equality Before the Law" },
-    "32": { name: "Nevada", capital: "Carson City", motto: "All for Our Country" },
-    "33": { name: "New Hampshire", capital: "Concord", motto: "Live Free or Die" },
-    "34": { name: "New Jersey", capital: "Trenton", motto: "Liberty and Prosperity" },
-    "35": { name: "New Mexico", capital: "Santa Fe", motto: "It Grows as It Goes" },
-    "36": { name: "New York", capital: "Albany", motto: "Ever Upward" },
-    "37": { name: "North Carolina", capital: "Raleigh", motto: "To Be, Rather Than to Seem" },
-    "38": { name: "North Dakota", capital: "Bismarck", motto: "Liberty and Union, Now and Forever, One and Inseparable" },
-    "39": { name: "Ohio", capital: "Columbus", motto: "With God, All Things Are Possible" },
-    "40": { name: "Oklahoma", capital: "Oklahoma City", motto: "Labor Conquers All Things" },
-    "41": { name: "Oregon", capital: "Salem", motto: "She Flies With Her Own Wings" },
-    "42": { name: "Pennsylvania", capital: "Harrisburg", motto: "Virtue, Liberty and Independence" },
-    "44": { name: "Rhode Island", capital: "Providence", motto: "Hope" },
-    "45": { name: "South Carolina", capital: "Columbia", motto: "While I Breathe, I Hope" },
-    "46": { name: "South Dakota", capital: "Pierre", motto: "Under God the People Rule" },
-    "47": { name: "Tennessee", capital: "Nashville", motto: "Agriculture and Commerce" },
-    "48": { name: "Texas", capital: "Austin", motto: "Friendship" },
-    "49": { name: "Utah", capital: "Salt Lake City", motto: "Industry" },
-    "50": { name: "Vermont", capital: "Montpelier", motto: "Freedom and Unity" },
-    "51": { name: "Virginia", capital: "Richmond", motto: "Thus Always to Tyrants" },
-    "53": { name: "Washington", capital: "Olympia", motto: "By and By" },
-    "54": { name: "West Virginia", capital: "Charleston", motto: "Mountaineers Are Always Free" },
-    "55": { name: "Wisconsin", capital: "Madison", motto: "Forward" },
-    "56": { name: "Wyoming", capital: "Cheyenne", motto: "Equal Rights" }
+    "01": { name: "Alabama", capital: "Montgomery", nickname: "The Yellowhammer State" },
+    "02": { name: "Alaska", capital: "Juneau", nickname: "The Last Frontier" },
+    "04": { name: "Arizona", capital: "Phoenix", nickname: "The Grand Canyon State" },
+    "05": { name: "Arkansas", capital: "Little Rock", nickname: "The Natural State" },
+    "06": { name: "California", capital: "Sacramento", nickname: "The Golden State" },
+    "08": { name: "Colorado", capital: "Denver", nickname: "The Centennial State" },
+    "09": { name: "Connecticut", capital: "Hartford", nickname: "The Constitution State" },
+    "10": { name: "Delaware", capital: "Dover", nickname: "The First State" },
+    "12": { name: "Florida", capital: "Tallahassee", nickname: "The Sunshine State" },
+    "13": { name: "Georgia", capital: "Atlanta", nickname: "The Peach State" },
+    "15": { name: "Hawaii", capital: "Honolulu", nickname: "The Aloha State" },
+    "16": { name: "Idaho", capital: "Boise", nickname: "The Gem State" },
+    "17": { name: "Illinois", capital: "Springfield", nickname: "The Prairie State" },
+    "18": { name: "Indiana", capital: "Indianapolis", nickname: "The Hoosier State" },
+    "19": { name: "Iowa", capital: "Des Moines", nickname: "The Hawkeye State" },
+    "20": { name: "Kansas", capital: "Topeka", nickname: "The Sunflower State" },
+    "21": { name: "Kentucky", capital: "Frankfort", nickname: "The Bluegrass State" },
+    "22": { name: "Louisiana", capital: "Baton Rouge", nickname: "The Pelican State" },
+    "23": { name: "Maine", capital: "Augusta", nickname: "The Pine Tree State" },
+    "24": { name: "Maryland", capital: "Annapolis", nickname: "The Old Line State" },
+    "25": { name: "Massachusetts", capital: "Boston", nickname: "The Bay State" },
+    "26": { name: "Michigan", capital: "Lansing", nickname: "The Great Lakes State" },
+    "27": { name: "Minnesota", capital: "Saint Paul", nickname: "The North Star State" },
+    "28": { name: "Mississippi", capital: "Jackson", nickname: "The Magnolia State" },
+    "29": { name: "Missouri", capital: "Jefferson City", nickname: "The Show-Me State" },
+    "30": { name: "Montana", capital: "Helena", nickname: "The Treasure State" },
+    "31": { name: "Nebraska", capital: "Lincoln", nickname: "The Cornhusker State" },
+    "32": { name: "Nevada", capital: "Carson City", nickname: "The Silver State" },
+    "33": { name: "New Hampshire", capital: "Concord", nickname: "The Granite State" },
+    "34": { name: "New Jersey", capital: "Trenton", nickname: "The Garden State" },
+    "35": { name: "New Mexico", capital: "Santa Fe", nickname: "The Land of Enchantment" },
+    "36": { name: "New York", capital: "Albany", nickname: "The Empire State" },
+    "37": { name: "North Carolina", capital: "Raleigh", nickname: "The Tar Heel State" },
+    "38": { name: "North Dakota", capital: "Bismarck", nickname: "The Peace Garden State" },
+    "39": { name: "Ohio", capital: "Columbus", nickname: "The Buckeye State" },
+    "40": { name: "Oklahoma", capital: "Oklahoma City", nickname: "The Sooner State" },
+    "41": { name: "Oregon", capital: "Salem", nickname: "The Beaver State" },
+    "42": { name: "Pennsylvania", capital: "Harrisburg", nickname: "The Keystone State" },
+    "44": { name: "Rhode Island", capital: "Providence", nickname: "The Ocean State" },
+    "45": { name: "South Carolina", capital: "Columbia", nickname: "The Palmetto State" },
+    "46": { name: "South Dakota", capital: "Pierre", nickname: "The Mount Rushmore State" },
+    "47": { name: "Tennessee", capital: "Nashville", nickname: "The Volunteer State" },
+    "48": { name: "Texas", capital: "Austin", nickname: "The Lone Star State" },
+    "49": { name: "Utah", capital: "Salt Lake City", nickname: "The Beehive State" },
+    "50": { name: "Vermont", capital: "Montpelier", nickname: "The Green Mountain State" },
+    "51": { name: "Virginia", capital: "Richmond", nickname: "The Old Dominion" },
+    "53": { name: "Washington", capital: "Olympia", nickname: "The Evergreen State" },
+    "54": { name: "West Virginia", capital: "Charleston", nickname: "The Mountain State" },
+    "55": { name: "Wisconsin", capital: "Madison", nickname: "The Badger State" },
+    "56": { name: "Wyoming", capital: "Cheyenne", nickname: "The Cowboy State" }
 };
 
 // Get list of 50 states (excluding DC)
@@ -64,7 +64,7 @@ const fiftyStates = Object.entries(stateData).map(([fips, data]) => ({
 const MODES = {
     STATES: 'states',
     CAPITALS: 'capitals',
-    MOTTOS: 'mottos',
+    NICKNAMES: 'nicknames',
     WILDCARD: 'wildcard'
 };
 
@@ -162,7 +162,7 @@ class USStatesQuiz {
         // Mode selection buttons
         document.querySelectorAll('.mode-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const mode = e.target.dataset.mode;
+                const mode = e.target.closest('.mode-btn').dataset.mode;
                 this.startGame(mode);
             });
         });
@@ -214,14 +214,26 @@ class USStatesQuiz {
         if (this.mode === MODES.WILDCARD) {
             // Mix of all three types, 50 questions total
             this.remainingQuestions = states.map(state => {
-                const types = ['state', 'capital', 'motto'];
+                const types = ['state', 'capital', 'nickname'];
                 const type = types[Math.floor(Math.random() * types.length)];
                 return { ...state, questionType: type };
             });
             this.totalQuestions = 50;
         } else {
-            const questionType = this.mode === MODES.STATES ? 'state' :
-                                 this.mode === MODES.CAPITALS ? 'capital' : 'motto';
+            let questionType;
+            switch (this.mode) {
+                case MODES.STATES:
+                    questionType = 'state';
+                    break;
+                case MODES.CAPITALS:
+                    questionType = 'capital';
+                    break;
+                case MODES.NICKNAMES:
+                    questionType = 'nickname';
+                    break;
+                default:
+                    questionType = 'state';
+            }
             this.remainingQuestions = states.map(state => ({ ...state, questionType }));
             this.totalQuestions = 50;
         }
@@ -231,7 +243,7 @@ class USStatesQuiz {
         switch (this.mode) {
             case MODES.STATES: return 'States';
             case MODES.CAPITALS: return 'Capitals';
-            case MODES.MOTTOS: return 'Mottos';
+            case MODES.NICKNAMES: return 'Nicknames';
             case MODES.WILDCARD: return 'Wildcard';
             default: return '';
         }
@@ -243,8 +255,8 @@ class USStatesQuiz {
                 return question.name;
             case 'capital':
                 return `Capital: ${question.capital}`;
-            case 'motto':
-                return `"${question.motto}"`;
+            case 'nickname':
+                return `"${question.nickname}"`;
             default:
                 return question.name;
         }
@@ -533,7 +545,7 @@ class USStatesQuiz {
         switch (mode) {
             case MODES.STATES: return 'States';
             case MODES.CAPITALS: return 'Capitals';
-            case MODES.MOTTOS: return 'Mottos';
+            case MODES.NICKNAMES: return 'Nicknames';
             case MODES.WILDCARD: return 'Wildcard';
             default: return '';
         }
